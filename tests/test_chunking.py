@@ -23,3 +23,9 @@ def test_no_redundant_last_chunk():
         "ABCDEFGHIJ",
         "HIJKLMNOPQ",
     ]
+
+def test_invalid_sizes_raise():
+    with pytest.raises(ValueError):
+        chunk_text("hello", chunk_size=0, overlap=0)
+    with pytest.raises(ValueError):
+        chunk_text("hello", chunk_size=5, overlap=-1)
