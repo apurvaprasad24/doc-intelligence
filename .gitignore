@@ -218,3 +218,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Project-specific ---
+# Uploaded user documents (may be private)
+data/uploads/
+
+# Vector index and metadata we generate
+data/index/
+*.faiss
+*.index
+
+# Other env files (keep a safe template tracked)
+.env.*
+!.env.example
