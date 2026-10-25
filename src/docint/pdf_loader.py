@@ -4,6 +4,12 @@ from pathlib import Path
 
 import pymupdf
 
+@dataclass
+class Chunk:
+    doc_name: str
+    page_number: int
+    chunk_index: int
+    text: str
 
 @dataclass
 class PageResult:
@@ -84,5 +90,4 @@ def read_pdf_file(path: str | Path) -> PDFResult:
         # Close the document even if extraction or validation fails.
         if doc is not None:
             doc.close()
-
 
