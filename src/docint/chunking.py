@@ -11,6 +11,8 @@ def chunk_text(text: str, chunk_size: int = 800, overlap: int = 150) -> list[str
     while start < len(text):
         chunk = text[start : start + chunk_size]
         chunks.append(chunk)
+        if start + chunk_size >= len(text):
+            break
         start += chunk_size - overlap
 
     return chunks

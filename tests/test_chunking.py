@@ -17,3 +17,9 @@ def test_empty_text_returns_empty_list():
 def test_overlap_too_big_raises():
     with pytest.raises(ValueError):
         chunk_text("hello", chunk_size=5, overlap=5)
+
+def test_no_redundant_last_chunk():
+    assert chunk_text("ABCDEFGHIJKLMNOPQ", chunk_size=10, overlap=3) == [
+        "ABCDEFGHIJ",
+        "HIJKLMNOPQ",
+    ]
