@@ -1,7 +1,8 @@
 import numpy as np
+from docint.config import EMBEDDING_MODEL
 from sentence_transformers import SentenceTransformer
 
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME = EMBEDDING_MODEL
 
 _model = None
 

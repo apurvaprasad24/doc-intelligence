@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from docint.pdf_loader import PDFResult
-
+from docint.config import CHUNK_OVERLAP, CHUNK_SIZE
 
 @dataclass
 class Chunk:
@@ -11,7 +11,7 @@ class Chunk:
     text: str
 
 
-def chunk_text(text: str, chunk_size: int = 800, overlap: int = 150) -> list[str]:
+def chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
     if chunk_size <= 0 or overlap < 0:
         raise ValueError("chunk_size must be positive and overlap cannot be negative")
 
@@ -35,7 +35,7 @@ def chunk_text(text: str, chunk_size: int = 800, overlap: int = 150) -> list[str
 
 
 def chunk_pages(
-    pdf: PDFResult, chunk_size: int = 800, overlap: int = 150
+    pdf: PDFResult, chunk_size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP
 ) -> list[Chunk]:
     chunks: list[Chunk] = []
 

@@ -1,5 +1,5 @@
 import faiss
-
+from docint.config import TOP_K
 from docint.chunking import Chunk
 from docint.embeddings import embed_texts
 
@@ -16,7 +16,7 @@ def build_index(chunks: list[Chunk]) -> faiss.IndexFlatIP:
 
 
 def search(
-    index: faiss.IndexFlatIP, chunks: list[Chunk], query: str, k: int = 3
+    index: faiss.IndexFlatIP, chunks: list[Chunk], query: str, k: int = TOP_K
 ) -> list[tuple[Chunk, float]]:
     """Return the k chunks closest in meaning to the query, with scores."""
     query_vector = embed_texts([query])
